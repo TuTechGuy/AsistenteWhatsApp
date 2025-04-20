@@ -2,9 +2,10 @@ from fastapi import FastAPI,Form
 from utils.utils import send_message
 import uvicorn
 import os
+from pydantic import BaseModel
 
 app = FastAPI()
-class Request:
+class Request(BaseModel):
     To: str
     Body: str
     From: str
