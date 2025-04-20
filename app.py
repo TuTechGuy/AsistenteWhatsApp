@@ -15,7 +15,7 @@ async def reply(Body: str = Form()):
     try:
         print(Body)
 
-        send_message(os.getenv('TWILIO_NUMBER'), f'Hola\n{Body}')
+        send_message(os.getenv('TO_NUMBER'), f'Hola\n{Body}')
         return "HolaReturn"
     except Exception as e:
         print(f"Error: {e}")
