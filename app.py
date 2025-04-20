@@ -10,7 +10,7 @@ async def index():
     return {"msg": "up & running"}
 
 @app.post("/message")
-async def reply(Body: str = Form()):
+async def reply(Body: str):
     # Call the OpenAI API to generate text with GPT-3.5
     try:
         print(Body)
