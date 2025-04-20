@@ -4,18 +4,22 @@ import uvicorn
 import os
 
 app = FastAPI()
+class Request:
+    To: str
+    Body: str
+    From: str
+
 
 @app.get("/")
 async def index():
     return {"msg": "up & running"}
 
 @app.post("/message")
-async def reply(Body: str):
+async def reply(request: Request):
     # Call the OpenAI API to generate text with GPT-3.5
     try:
-        print(Body)
 
-        send_message(os.getenv('TO_NUMBER'), f'Hola\n{Body}')
+        send_message(os.getenv('TO_NUMBER'), f'Hola\n{Request.Body}\n{Request.From}\n{Request.To}')
         return "HolaReturn"
     except Exception as e:
         print(f"Error: {e}")
