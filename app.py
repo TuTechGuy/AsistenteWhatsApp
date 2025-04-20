@@ -25,13 +25,13 @@ async def reply(Body: str = Form(...),From: str = Form(...)):
             messages=[
                 {"role": "user", "content": Body}
             ],
-            max_tokens=100,
             temperature=0.7
         )
         respuesta = response.choices[0].message.content
         send_message(From, respuesta)
         return "HolaReturn"
     except Exception as e:
+        send_message(From, e)
         print(f"Error: {e}")
         return "Error"
 
